@@ -1,0 +1,81 @@
+.formatting-options-section {
+    width: 100%;
+    margin-bottom: 1.5rem;
+    padding: 1rem;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    background-color: #f9f9f9;
+    box-sizing: border-box;
+}
+
+.formatting-options-section h3 {
+    margin-top: 0;
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: #d9534f;
+}
+
+.options-grid-container {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 1.5rem;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+}
+
+.form-group label {
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: #333;
+}
+
+.form-control {
+    padding: 0.5rem;
+    font-size: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    background-color: #fff;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+/* Style pour la checkbox */
+.form-group-checkbox {
+    margin-top: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+.form-group-checkbox label {
+    font-weight: 500;
+    color: #000;
+}
+.form-group-checkbox input[type="checkbox"] {
+    width: 1.25em;
+    height: 1.25em;
+}
+
+
+/* --- Responsive : 2 colonnes sur écran moyen --- */
+@media (max-width: 1150px) {
+    .options-grid-container {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+/* --- Responsive : 1 colonne sur petit écran --- */
+@media (max-width: 576px) {
+    .options-grid-container {
+        grid-template-columns: 1fr;
+    }
+
+    .formatting-options-section h3 {
+        font-size: 1.2rem;
+    }
+}

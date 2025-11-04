@@ -1,0 +1,21 @@
+.adapted-preview {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+}
+
+.pdf-viewer {
+    width: 100%;
+    height: 100%;
+    flex-grow: 1;
+    border: none;
+}
+
+.adapted-preview .placeholder {
+    flex-grow: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #888;
+    height: 100%;
+}
