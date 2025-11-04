@@ -47,10 +47,10 @@ function App() {
                     />
                 </div>
 
-                <Actions
-                    originalText={originalText}
-                    options={formattingOptions}
-                />
+                {/*<Actions*/}
+                {/*    originalText={originalText}*/}
+                {/*    options={formattingOptions}*/}
+                {/*/>*/}
 
             </main>
         </div>

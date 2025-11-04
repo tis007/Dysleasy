@@ -1,4 +1,5 @@
 import React from 'react';
+import './OriginalInput.css';
 
 const OriginalInput = ({ text, setText }) => {
     return (

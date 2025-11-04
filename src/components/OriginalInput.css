@@ -1,0 +1,11 @@
+.original-input {
+    display: flex;
+    flex-direction: column;
+}
+
+.original-input textarea {
+    flex-grow: 1;
+    width: 100%;
+    box-sizing: border-box;
+    field-sizing: content;
+}
