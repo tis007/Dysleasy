@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, {useState} from 'react';
 import './App.css';
 
 import Header from './components/Header';
@@ -6,7 +6,6 @@ import FileUpload from './components/FileUpload';
 import FormattingOptions from './components/FormattingOptions';
 import OriginalInput from './components/OriginalInput';
 import AdaptedPreview from './components/AdaptedPreview';
-import Actions from './components/Actions';
 
 function App() {
 
@@ -24,7 +23,7 @@ function App() {
 
     return (
         <div className="app-container">
-            <Header />
+            <Header/>
 
             <main className="app-content">
                 <FileUpload

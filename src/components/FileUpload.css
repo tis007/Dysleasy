@@ -1,0 +1,26 @@
+.file-upload-section {
+    display: flex;
+    justify-content: flex-start;
+    margin-bottom: 20px;
+}
+
+.dropzone-placeholder {
+    border: 2px dashed #ccc;
+    border-radius: 8px;
+    padding: 25px;
+    text-align: center;
+    cursor: pointer;
+    transition: background-color 0.2s, border-color 0.2s;
+    width: 350px;
+    background-color: #fafafa;
+    color: #666;
+}
+
+.dropzone-placeholder:hover {
+    background-color: #f0f0f0;
+    border-color: #aaa;
+}
+
+.file-upload-section h3 {
+    display: none;
+}
