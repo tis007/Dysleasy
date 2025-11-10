@@ -1,14 +1,9 @@
+// src/components/FormattingOptions.jsx
 import React from 'react';
-// Importez le CSS pour ce composant (nous le créerons à l'étape 2)
 import './FormattingOptions.css';
 
-const FormattingOptions = ({options, setOptions}) => {
+const FormattingOptions = ({options, setOptions, isUpdateRequired, onUpdateClick}) => {
 
-    /**
-     * Gestionnaire générique pour tous les changements d'inputs.
-     * Il identifie quel champ a changé grâce à `e.target.name`
-     * et met à jour la bonne clé dans l'objet 'options'.
-     */
     const handleChange = (e) => {
         const {name, type, value, checked} = e.target;
 
@@ -33,9 +28,8 @@ const FormattingOptions = ({options, setOptions}) => {
                 <span role="img" aria-label="options">⚙️</span> Options de mise en forme
             </h3>
 
-
             <div className="options-grid-container">
-
+                {/* ... (tous vos champs de formulaire restent ici) ... */}
                 {/* === Police === */}
                 <div className="form-group">
                     <label htmlFor="font">Police</label>
@@ -132,6 +126,14 @@ const FormattingOptions = ({options, setOptions}) => {
                 <label htmlFor="highlight">Activer la surbrillance</label>
             </div>
 
+            {/* NOUVEAU: Bouton de mise à jour conditionnel */}
+            {isUpdateRequired && (
+                <div className="update-button-container">
+                    <button onClick={onUpdateClick} className="update-pdf-button">
+                        Mettre à jour le PDF avec les nouvelles options
+                    </button>
+                </div>
+            )}
         </div>
     );
 };

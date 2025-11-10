@@ -1,3 +1,4 @@
+// src/components/AdaptedDocument.jsx
 import React from 'react';
 import {Document, Font, Page, StyleSheet, Text, View} from '@react-pdf/renderer';
 
@@ -91,7 +92,7 @@ const mapOptionsToStyles = (options) => {
                 fontSize: options.size,
                 letterSpacing: letterSpacing,
                 lineHeight: lineHeightValue,
-                marginRight: (letterSpacing || 1) * wordSpacingMultiplier * 2, // Ajustement de l'espacement des mots
+                marginRight: (options.fontSize || 16) * wordSpacingMultiplier * 0.5, // Ajustement de l'espacement des mots
             },
         }),
     };
@@ -118,13 +119,13 @@ const RenderTextWithWords = ({text, styles}) => {
     );
 };
 
-const AdaptedDocument = ({text, options}) => {
+const AdaptedDocument = ({text, options, onRender}) => {
     //console.log("Options appliquées au PDF:", options);
 
     const {styles} = mapOptionsToStyles(options);
 
     return (
-        <Document>
+        <Document onRender={onRender}>
             <Page size="A4" style={styles.page}>
                 <RenderTextWithWords
                     text={text}

@@ -1,23 +1,48 @@
+/* src/components/AdaptedPreview.css */
 .adapted-preview {
     display: flex;
     flex-direction: column;
-    height: 100vh;
+    height: 100vh; /* Assure que le conteneur prend de la hauteur */
+}
+
+.pdf-viewer-container {
+    flex-grow: 1; /* Permet au conteneur du PDF de prendre l'espace restant */
+    width: 100%;
+    border: 1px solid black;
 }
 
 .pdf-viewer {
     width: 100%;
     height: 100%;
-    flex-grow: 1;
     border: none;
 }
 
-.adapted-preview .placeholder {
+.adapted-preview .placeholder,
+.manual-generation-placeholder {
     flex-grow: 1;
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
     color: #888;
     height: 100%;
+    text-align: center;
+}
+
+.generate-pdf-button {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    margin-top: 15px;
+    transition: background-color 0.3s;
+}
+
+.generate-pdf-button:hover {
+    background-color: #0056b3;
 }
 
 .hidden {
