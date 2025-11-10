@@ -1,3 +1,4 @@
+// src/components/AdaptedPreview.jsx
 import React from 'react';
 import {PDFViewer} from '@react-pdf/renderer';
 import AdaptedDocument from './AdaptedDocument';
@@ -45,4 +46,5 @@ const AdaptedPreview = ({originalText, adaptedText, options, onGenerateClick, se
     );
 };
 
-export default AdaptedPreview;
+// Utilisation de React.memo pour éviter les re-rendus si les props n'ont pas changé
+export default React.memo(AdaptedPreview);
