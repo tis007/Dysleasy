@@ -126,7 +126,7 @@ const FormattingOptions = ({options, setOptions, isUpdateRequired, onUpdateClick
                 <label htmlFor="highlight">Activer la surbrillance</label>
             </div>
 
-            {/* NOUVEAU: Bouton de mise à jour conditionnel */}
+            {/*Bouton de mise à jour */}
             {isUpdateRequired && (
                 <div className="update-button-container">
                     <button onClick={onUpdateClick} className="update-pdf-button">

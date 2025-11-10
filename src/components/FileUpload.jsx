@@ -1,8 +1,7 @@
 import React, { useState } from 'react';
 import * as pdfjsLib from 'pdfjs-dist';
-import './FileUpload.css'; // Importez le fichier CSS
-import LoadingScreen from './LoadingScreen'; // Importer le composant de chargement
-// Pour la compatibilité avec les bundlers comme Vite ou Webpack 5+
+import './FileUpload.css';
+import LoadingScreen from './LoadingScreen';
 import pdfjsWorker from 'pdfjs-dist/build/pdf.worker.mjs?url';
 
 pdfjsLib.GlobalWorkerOptions.workerSrc = pdfjsWorker;
@@ -12,7 +11,7 @@ const FileUpload = ({setOriginalText}) => {
 
     const handleFile = async (file) => {
         if (!file) return;
-        setIsLoading(true); // Activer l'écran de chargement
+        setIsLoading(true);
 
         if (file.type === 'application/pdf') {
             const reader = new FileReader();
@@ -80,7 +79,7 @@ const FileUpload = ({setOriginalText}) => {
                     console.error('Erreur lors de l\'analyse du PDF:', error);
                     alert('Impossible de lire le fichier PDF.');
                 } finally {
-                    setIsLoading(false); // Désactiver l'écran de chargement
+                    setIsLoading(false);
                 }
             };
             reader.readAsArrayBuffer(file);
@@ -88,10 +87,10 @@ const FileUpload = ({setOriginalText}) => {
             const reader = new FileReader();
             reader.onload = (e) => {
                 setOriginalText(e.target.result);
-                setIsLoading(false); // Désactiver l'écran de chargement
+                setIsLoading(false);
             };
             reader.onerror = () => {
-                setIsLoading(false); // Désactiver en cas d'erreur
+                setIsLoading(false);
                 alert('Impossible de lire le fichier texte.');
             };
             reader.readAsText(file);
