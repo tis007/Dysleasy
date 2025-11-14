@@ -70,7 +70,7 @@ const mapOptionsToStyles = (options) => {
     }
 
     const fontFamily = options.font;
-    const textColor = options.highlight ? '#333333' : '#000000';
+    const textColor = options.highlight ? '#444' : '#000000';
 
     return {
         styles: StyleSheet.create({
