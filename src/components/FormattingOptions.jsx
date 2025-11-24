@@ -11,7 +11,21 @@ const FormattingOptions = ({options, setOptions, isUpdateRequired, onUpdateClick
         if (type === 'checkbox') {
             finalValue = checked;
         } else if (type === 'number' || type === 'range') {
-            finalValue = parseFloat(value) || 0;
+            let parsedValue = parseFloat(value);
+
+            if (isNaN(parsedValue)) {
+                parsedValue = 0;
+            }
+
+            // Ajout des validations pour les valeurs maximales
+            if (name === 'size' && parsedValue > 72) {
+                parsedValue = 72;
+            }
+            if (name === 'lineHeight' && parsedValue > 5) {
+                parsedValue = 5gi;
+            }
+
+            finalValue = parsedValue;
         } else {
             finalValue = value;
         }
@@ -126,7 +140,7 @@ const FormattingOptions = ({options, setOptions, isUpdateRequired, onUpdateClick
                             type="number"
                             name="lineHeight"
                             min="1"
-                            max="3"
+                            max="5"
                             step="0.1"
                             value={options.lineHeight}
                             onChange={handleChange}
