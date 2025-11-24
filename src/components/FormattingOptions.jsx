@@ -10,7 +10,7 @@ const FormattingOptions = ({options, setOptions, isUpdateRequired, onUpdateClick
         let finalValue;
         if (type === 'checkbox') {
             finalValue = checked;
-        } else if (type === 'number') {
+        } else if (type === 'number' || type === 'range') {
             finalValue = parseFloat(value) || 0;
         } else {
             finalValue = value;
@@ -29,7 +29,6 @@ const FormattingOptions = ({options, setOptions, isUpdateRequired, onUpdateClick
             </h3>
 
             <div className="options-grid-container">
-                {/* ... (tous vos champs de formulaire restent ici) ... */}
                 {/* === Police === */}
                 <div className="form-group">
                     <label htmlFor="font">Police</label>
@@ -58,60 +57,93 @@ const FormattingOptions = ({options, setOptions, isUpdateRequired, onUpdateClick
                         onChange={handleChange}
                         className="form-control"
                         min="1"
+                        max="72"
                     />
                 </div>
 
                 {/* === Espacement Caractères === */}
                 <div className="form-group">
                     <label htmlFor="charSpacing">Espacement entre les caractères</label>
-                    <select
-                        id="charSpacing"
-                        name="charSpacing"
-                        value={options.charSpacing}
-                        onChange={handleChange}
-                        className="form-control"
-                    >
-                        <option value="default">Default</option>
-                        <option value="petit">Petit</option>
-                        <option value="normal">Normal</option>
-                        <option value="grand">Grand</option>
-                        <option value="tres grand">Très grand</option>
-                    </select>
+                    <div className="slider-input-group">
+                        <input
+                            type="number"
+                            name="charSpacing"
+                            min="0"
+                            max="5"
+                            step="0.1"
+                            value={options.charSpacing}
+                            onChange={handleChange}
+                            className="form-control number-input"
+                        />
+                        <input
+                            type="range"
+                            id="charSpacing"
+                            name="charSpacing"
+                            min="0"
+                            max="5"
+                            step="0.1"
+                            value={options.charSpacing}
+                            onChange={handleChange}
+                            className="slider"
+                        />
+                    </div>
                 </div>
 
                 {/* === Espacement Mots === */}
                 <div className="form-group">
                     <label htmlFor="wordSpacing">Espacement entre les mots</label>
-                    <select
-                        id="wordSpacing"
-                        name="wordSpacing"
-                        value={options.wordSpacing}
-                        onChange={handleChange}
-                        className="form-control"
-                    >
-                        <option value="default">Default</option>
-                        <option value="petit">Petit</option>
-                        <option value="normal">Normal</option>
-                        <option value="grand">Grand</option>
-                        <option value="tres grand">Très grand</option>
-                    </select>
+                    <div className="slider-input-group">
+                        <input
+                            type="number"
+                            name="wordSpacing"
+                            min="0"
+                            max="5"
+                            step="0.1"
+                            value={options.wordSpacing}
+                            onChange={handleChange}
+                            className="form-control number-input"
+                        />
+                        <input
+                            type="range"
+                            id="wordSpacing"
+                            name="wordSpacing"
+                            min="0"
+                            max="5"
+                            step="0.1"
+                            value={options.wordSpacing}
+                            onChange={handleChange}
+                            className="slider"
+                        />
+                    </div>
                 </div>
 
 
                 {/* === Espacement inter-lignes === */}
                 <div className="form-group">
                     <label htmlFor="lineHeight">Espacement interligne</label>
-                    <select
-                        id="lineHeight"
-                        name="lineHeight"
-                        value={options.lineHeight}
-                        onChange={handleChange}
-                        className="form-control"
-                    >
-                        <option value="x1">x1</option>
-                        <option value="x1.5">x1.5</option>
-                        <option value="x2">x2</option>
-                    </select>
+                    <div className="slider-input-group">
+                        <input
+                            type="number"
+                            name="lineHeight"
+                            min="1"
+                            max="3"
+                            step="0.1"
+                            value={options.lineHeight}
+                            onChange={handleChange}
+                            className="form-control number-input"
+                        />
+                        <input
+                            type="range"
+                            id="lineHeight"
+                            name="lineHeight"
+                            min="1"
+                            max="3"
+                            step="0.1"
+                            value={options.lineHeight}
+                            onChange={handleChange}
+                            className="slider"
+                        />
+                    </div>
                 </div>
             </div>
             {/* === Checkbox Surbrillance === */}

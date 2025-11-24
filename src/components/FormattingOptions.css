@@ -103,3 +103,17 @@
 .update-pdf-button:hover {
     background-color: #218838;
 }
+
+.slider-input-group {
+    display: flex;
+    align-items: center;
+    gap: 10px; /* Espace entre l'input et le slider */
+}
+
+.slider-input-group .number-input {
+    width: 60px; /* Largeur fixe pour le champ numérique */
+}
+
+.slider-input-group .slider {
+    flex-grow: 1; /* Le slider prend l'espace restant */
+}
