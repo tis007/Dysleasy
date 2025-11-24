@@ -22,7 +22,7 @@ const FormattingOptions = ({options, setOptions, isUpdateRequired, onUpdateClick
                 parsedValue = 72;
             }
             if (name === 'lineHeight' && parsedValue > 5) {
-                parsedValue = 5gi;
+                parsedValue = 10;
             }
 
             finalValue = parsedValue;
