@@ -1,11 +1,19 @@
 .original-input {
     display: flex;
     flex-direction: column;
+    min-width: 0;
 }
 
 .original-input textarea {
     flex-grow: 1;
     width: 100%;
     box-sizing: border-box;
-    field-sizing: content;
+    min-height: 150px;
+    resize: vertical;
+}
+
+@media (max-width: 768px) {
+    .original-input textarea {
+        min-height: 100px;
+    }
 }
