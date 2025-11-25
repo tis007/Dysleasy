@@ -71,7 +71,6 @@ function App() {
             <Header/>
 
             <main className="app-content">
-                <FileUpload setOriginalText={setOriginalText}/>
 
                 <FormattingOptions
                     options={formattingOptions}
@@ -79,6 +78,7 @@ function App() {
                     isUpdateRequired={isUpdateRequired}
                     onUpdateClick={handleGeneratePdf}
                 />
+                <FileUpload setOriginalText={setOriginalText}/>
 
                 <div className="text-display-container">
                     <OriginalInput

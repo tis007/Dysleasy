@@ -10,6 +10,7 @@ Font.register({family: 'Tahoma', src: '/public/fonts/Tahoma.ttf'});
 const mapOptionsToStyles = (options) => {
     const textColor = options.highlight ? '#444' : '#000000';
 
+
     return {
         styles: StyleSheet.create({
             page: {
@@ -22,7 +23,7 @@ const mapOptionsToStyles = (options) => {
                 flexDirection: 'row',
                 flexWrap: 'wrap',
                 alignItems: 'flex-end',
-                marginBottom: 5, // Ajoute un petit espace sous chaque ligne
+                marginBottom: 5,
             },
             text: {
                 fontFamily: options.font,
@@ -30,7 +31,7 @@ const mapOptionsToStyles = (options) => {
                 letterSpacing: options.charSpacing,
                 lineHeight: options.lineHeight,
                 color: textColor,
-                marginRight: (options.fontSize || 16) * options.wordSpacing * 0.5, // Ajustement de l'espacement des mots
+                marginRight: (options.size || 16) * options.wordSpacing * 0.5,
             },
             highlightedLetter: {
                 color: 'black',

@@ -110,7 +110,7 @@ const FormattingOptions = ({options, setOptions, isUpdateRequired, onUpdateClick
                         <input
                             type="number"
                             name="wordSpacing"
-                            min="0"
+                            min="1"
                             max="5"
                             step="0.1"
                             value={options.wordSpacing}
@@ -121,7 +121,7 @@ const FormattingOptions = ({options, setOptions, isUpdateRequired, onUpdateClick
                             type="range"
                             id="wordSpacing"
                             name="wordSpacing"
-                            min="0"
+                            min="1"
                             max="5"
                             step="0.1"
                             value={options.wordSpacing}
