@@ -31,7 +31,7 @@ const mapOptionsToStyles = (options) => {
                 letterSpacing: options.charSpacing,
                 lineHeight: options.lineHeight,
                 color: textColor,
-                marginRight: (options.size || 16) * options.wordSpacing * 0.5,
+                marginRight: (options.size || 16) * options.wordSpacing * 0.5 ,
             },
             highlightedLetter: {
                 color: 'black',
@@ -39,6 +39,7 @@ const mapOptionsToStyles = (options) => {
         }),
     };
 };
+
 const RenderTextWithWords = ({text, styles, options}) => {
     const lines = (text || '').split('\n');
 
@@ -51,14 +52,25 @@ const RenderTextWithWords = ({text, styles, options}) => {
 
                         const isHighlightActive = options.highlight;
                         const wordLength = word.length;
-                        const shouldHighlightLetter = isHighlightActive && (wordLength === 5 || wordLength === 6);
+                        const shouldHighlightFor5 = isHighlightActive && wordLength === 5;
+                        const shouldHighlightFor6 = isHighlightActive && wordLength === 6;
 
-                        if (shouldHighlightLetter) {
+                        if (shouldHighlightFor5) {
                             return (
                                 <Text key={wordIndex} style={styles.text}>
                                     {word.substring(0, 1)}
                                     <Text style={styles.highlightedLetter}>{word.substring(1, 2)}</Text>
                                     {word.substring(2)}
+                                </Text>
+                            );
+                        }
+
+                        if (shouldHighlightFor6) {
+                            return (
+                                <Text key={wordIndex} style={styles.text}>
+                                    {word.substring(0, 2)}
+                                    <Text style={styles.highlightedLetter}>{word.substring(2, 3)}</Text>
+                                    {word.substring(3)}
                                 </Text>
                             );
                         }
@@ -74,6 +86,7 @@ const RenderTextWithWords = ({text, styles, options}) => {
         </>
     );
 };
+
 
 const AdaptedDocument = ({text, options, onRender}) => {
     console.log("Options appliquées au PDF:", options);
