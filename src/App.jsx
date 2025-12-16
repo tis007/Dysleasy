@@ -99,7 +99,7 @@ function App() {
 
             <footer className="app-footer">
                 <img
-                    src="/Cc_by-nc-nd_icon.svg.png"
+                    src="/Dysleasy/public/Cc_by-nc-nd_icon.svg.png"
                     alt="Licence CC BY-NC-ND"
                     className="license-icon"
                 />
