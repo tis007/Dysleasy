@@ -89,7 +89,7 @@ const RenderTextWithWords = ({text, styles, options}) => {
 
 
 const AdaptedDocument = ({text, options, onRender}) => {
-    console.log("Options appliquées au PDF:", options);
+    //console.log("Options appliquées au PDF:", options);
 
     const {styles} = mapOptionsToStyles(options);
 
