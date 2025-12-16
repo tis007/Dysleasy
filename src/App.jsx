@@ -95,6 +95,15 @@ function App() {
                     />
                 </div>
             </main>
+
+
+            <footer className="app-footer">
+                <img
+                    src="/Cc_by-nc-nd_icon.svg.png"
+                    alt="Licence CC BY-NC-ND"
+                    className="license-icon"
+                />
+            </footer>
         </div>
     );
 }

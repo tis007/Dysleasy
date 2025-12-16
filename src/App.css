@@ -67,3 +67,19 @@
     }
 }
 
+/* src/App.css */
+.app-footer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 16px; /* espace autour du footer */
+    margin-top: 1rem;
+}
+
+.license-icon {
+    width: 25vw;      /* 1/4 de la largeur de l'écran */
+    max-width: 180px; /* limite optionnelle pour grands écrans */
+    height: auto;
+    padding: 8px;     /* padding interne autour de l'image */
+    display: block;
+}
