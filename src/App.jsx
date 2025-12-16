@@ -1,5 +1,5 @@
 // src/App.jsx
-import React, {useCallback, useEffect, useState, useRef} from 'react';
+import React, {useCallback, useEffect, useRef, useState} from 'react';
 import './App.css';
 
 import Header from './components/Header';
@@ -8,6 +8,7 @@ import FormattingOptions from './components/FormattingOptions';
 import OriginalInput from './components/OriginalInput';
 import AdaptedPreview from './components/AdaptedPreview';
 import LoadingScreen from './components/LoadingScreen';
+import ccIcon from './assets/Cc_by-nc-nd_icon.svg.png';
 
 function App() {
     const [originalText, setOriginalText] = useState('');
@@ -99,7 +100,7 @@ function App() {
 
             <footer className="app-footer">
                 <img
-                    src="public/Cc_by-nc-nd_icon.svg.png"
+                    src={ccIcon}
                     alt="Licence CC BY-NC-ND"
                     className="license-icon"
                 />
