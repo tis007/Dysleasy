@@ -1,23 +1,55 @@
-// src/components/FormattingOptions.jsx
+// `src/components/FormattingOptions.jsx`
 import React from 'react';
 import './FormattingOptions.css';
 
 const FormattingOptions = ({options, setOptions, isUpdateRequired, onUpdateClick}) => {
 
+    const normalizeHex = (input) => {
+        if (!input) return null;
+        let v = input.trim().replace(/^#/, '');
+        if (!/^[0-9a-fA-F]{3}$|^[0-9a-fA-F]{6}$/.test(v)) return null;
+        if (v.length === 3) v = v.split('').map(c => c + c).join('');
+        return `#${v.toLowerCase()}`;
+    };
+
     const handleChange = (e) => {
         const {name, type, value, checked} = e.target;
 
-        let finalValue;
+        // Checkbox
         if (type === 'checkbox') {
-            finalValue = checked;
-        } else if (type === 'number' || type === 'range') {
-            let parsedValue = parseFloat(value);
+            setOptions(prev => ({...prev, [name]: checked}));
+            return;
+        }
 
-            if (isNaN(parsedValue)) {
-                parsedValue = 0;
+        // Slider pour nuance de gris (0-255) : synchronise highlightGray et highlightColor
+        if (name === 'highlightGray') {
+            let parsed = parseInt(value, 10);
+            if (isNaN(parsed)) parsed = 0;
+            parsed = Math.max(0, Math.min(255, parsed));
+            const hex = parsed.toString(16).padStart(2, '0');
+            const color = `#${hex}${hex}${hex}`;
+            setOptions(prev => ({...prev, highlightGray: parsed, highlightColor: color}));
+            return;
+        }
+
+        // Champ hex éditable : normalise et synchronise highlightColor et highlightGray
+        if (name === 'highlightColor') {
+            const normalized = normalizeHex(value);
+            if (normalized) {
+                const gray = parseInt(normalized.slice(1, 3), 16);
+                setOptions(prev => ({...prev, highlightColor: normalized, highlightGray: gray}));
+            } else {
+                // si invalide, stocke la saisie brute (permet édition) sans casser l'app
+                setOptions(prev => ({...prev, highlightColor: value}));
             }
+            return;
+        }
 
-            // Ajout des validations pour les valeurs maximales
+        // Nombre / range pour les autres inputs
+        if (type === 'number' || type === 'range') {
+            let parsedValue = parseFloat(value);
+            if (isNaN(parsedValue)) parsedValue = 0;
+
             if (name === 'size' && parsedValue > 72) {
                 parsedValue = 72;
             }
@@ -25,14 +57,17 @@ const FormattingOptions = ({options, setOptions, isUpdateRequired, onUpdateClick
                 parsedValue = 10;
             }
 
-            finalValue = parsedValue;
-        } else {
-            finalValue = value;
+            setOptions(prevOptions => ({
+                ...prevOptions,
+                [name]: parsedValue
+            }));
+            return;
         }
 
+        // Texte / select
         setOptions(prevOptions => ({
             ...prevOptions,
-            [name]: finalValue
+            [name]: value
         }));
     };
 
@@ -131,7 +166,6 @@ const FormattingOptions = ({options, setOptions, isUpdateRequired, onUpdateClick
                     </div>
                 </div>
 
-
                 {/* === Espacement inter-lignes === */}
                 <div className="form-group">
                     <label htmlFor="lineHeight">Espacement interligne</label>
@@ -160,16 +194,43 @@ const FormattingOptions = ({options, setOptions, isUpdateRequired, onUpdateClick
                     </div>
                 </div>
             </div>
-            {/* === Checkbox Surbrillance === */}
-            <div className="form-group-checkbox">
-                <input
-                    type="checkbox"
-                    id="highlight"
-                    name="highlight"
-                    checked={options.highlight}
-                    onChange={handleChange}
-                />
-                <label htmlFor="highlight">Activer la surbrillance</label>
+
+            {/* Checkbox + slider nuance de gris + input hex */}
+            <div className="form-group-checkbox highlight-controls">
+                <div className="checkbox-row">
+                    <input
+                        type="checkbox"
+                        id="highlight"
+                        name="highlight"
+                        checked={options.highlight}
+                        onChange={handleChange}
+                    />
+                    <label htmlFor="highlight">Activer la surbrillance</label>
+                </div>
+
+                <div className="highlight-controls-row">
+                    <input
+                        type="range"
+                        id="highlightGray"
+                        name="highlightGray"
+                        min="0"
+                        max="255"
+                        value={options.highlightGray}
+                        onChange={handleChange}
+                        className="slider gray-slider"
+                        aria-label="Nuance de gris"
+                    />
+                    <input
+                        type="text"
+                        id="highlightColor"
+                        name="highlightColor"
+                        value={options.highlightColor}
+                        onChange={handleChange}
+                        className="hex-input"
+                        maxLength="7"
+                        aria-label="Couleur hex"
+                    />
+                </div>
             </div>
 
             {/*Bouton de mise à jour */}

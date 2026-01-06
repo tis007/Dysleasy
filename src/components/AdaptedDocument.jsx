@@ -1,4 +1,4 @@
-// src/components/AdaptedDocument.jsx
+// `src/components/AdaptedDocument.jsx`
 import React from 'react';
 import {Document, Font, Page, StyleSheet, Text, View} from '@react-pdf/renderer';
 
@@ -7,9 +7,30 @@ Font.register({ family: 'Helvetica', src: new URL('../assets/fonts/Helvetica.ttf
 Font.register({ family: 'Lucida',  src: new URL('../assets/fonts/lucida.ttf',  import.meta.url).href });
 Font.register({ family: 'Tahoma',  src: new URL('../assets/fonts/Tahoma.ttf',  import.meta.url).href });
 
-const mapOptionsToStyles = (options) => {
-    const textColor = options.highlight ? '#444' : '#000000';
+const normalizeHex = (input) => {
+    if (!input) return null;
+    let v = input.trim().replace(/^#/, '');
+    if (/^[0-9a-fA-F]{3}$/.test(v)) v = v.split('').map(c => c + c).join('');
+    if (/^[0-9a-fA-F]{6}$/.test(v)) return `#${v.toLowerCase()}`;
+    return null;
+};
 
+const mapOptionsToStyles = (options = {}) => {
+    let textColor = '#000000';
+
+    if (options.highlight) {
+        const validHex = normalizeHex(options.highlightColor);
+        if (validHex) {
+            textColor = validHex;
+        } else if (typeof options.highlightGray === 'number') {
+            const hex = options.highlightGray.toString(16).padStart(2, '0');
+            textColor = `#${hex}${hex}${hex}`;
+        } else {
+            textColor = '#444444';
+        }
+    } else {
+        textColor = '#000000';
+    }
 
     return {
         styles: StyleSheet.create({
@@ -89,8 +110,6 @@ const RenderTextWithWords = ({text, styles, options}) => {
 
 
 const AdaptedDocument = ({text, options, onRender}) => {
-    //console.log("Options appliquées au PDF:", options);
-
     const {styles} = mapOptionsToStyles(options);
 
     return (

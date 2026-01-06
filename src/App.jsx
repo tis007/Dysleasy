@@ -1,4 +1,4 @@
-// src/App.jsx
+// `src/App.jsx`
 import React, {useCallback, useEffect, useRef, useState} from 'react';
 import './App.css';
 
@@ -15,7 +15,7 @@ function App() {
     const [adaptedText, setAdaptedText] = useState('');
     const [isGenerating, setIsGenerating] = useState(false);
     const [isUpdateRequired, setIsUpdateRequired] = useState(false);
-    const [pdfKey, setPdfKey] = useState(0); // 1. Ajouter l'état pour la clé
+    const [pdfKey, setPdfKey] = useState(0);
 
     const [formattingOptions, setFormattingOptions] = useState({
         font: 'Arial',
@@ -24,6 +24,8 @@ function App() {
         wordSpacing: 1,
         lineHeight: 1,
         highlight: false,
+        highlightColor: '#444444',
+        highlightGray: 68,
     });
 
     const optionsRef = useRef(formattingOptions);
@@ -37,7 +39,7 @@ function App() {
         if (originalText.length > 0 && originalText.length <= 8000) {
             setAdaptedText(originalText);
             setAppliedOptions(formattingOptions);
-            setPdfKey(prevKey => prevKey + 1); // 2. Incrémenter la clé ici
+            setPdfKey(prevKey => prevKey + 1);
             setIsUpdateRequired(false);
         } else {
             setAdaptedText('');
@@ -87,7 +89,7 @@ function App() {
                         setText={setOriginalText}
                     />
                     <AdaptedPreview
-                        pdfKey={pdfKey} // 4. Passer la clé en prop
+                        pdfKey={pdfKey}
                         originalText={originalText}
                         adaptedText={adaptedText}
                         options={appliedOptions}
@@ -96,7 +98,6 @@ function App() {
                     />
                 </div>
             </main>
-
 
             <footer className="app-footer">
                 <img
