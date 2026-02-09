@@ -2,10 +2,10 @@
 import React from 'react';
 import {Document, Font, Page, StyleSheet, Text, View} from '@react-pdf/renderer';
 
-Font.register({ family: 'Arial',   src: new URL('../assets/fonts/Arial.ttf',   import.meta.url).href });
+Font.register({ family: 'Arial',     src: new URL('../assets/fonts/arial.ttf',     import.meta.url).href });
 Font.register({ family: 'Helvetica', src: new URL('../assets/fonts/Helvetica.ttf', import.meta.url).href });
-Font.register({ family: 'Lucida',  src: new URL('../assets/fonts/lucida.ttf',  import.meta.url).href });
-Font.register({ family: 'Tahoma',  src: new URL('../assets/fonts/Tahoma.ttf',  import.meta.url).href });
+Font.register({ family: 'Lucida',    src: new URL('../assets/fonts/lucida.ttf',    import.meta.url).href });
+Font.register({ family: 'Tahoma',    src: new URL('../assets/fonts/tahoma.ttf',    import.meta.url).href });
 
 const normalizeHex = (input) => {
     if (!input) return null;
